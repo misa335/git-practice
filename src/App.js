@@ -1,25 +1,61 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import axios from "axios";
+import React, { useState, useEffect } from "react";
+
+// function App() {
+// 	const [pokemons, setPokemons] = useState([]);
+
+// 	useEffect(() => {
+// 		axios
+// 			.get("https://pokeapi.co/api/v2/pokemon/")
+// 			.then((response) => setPokemons(response.data.results));
+// 	}, []);
+
+// 	return (
+// 		<div>
+// 			{pokemons.map((pokemon, index) => {
+// 				return <p key={index}>{pokemon.name}</p>;
+// 			})}
+// 		</div>
+// 	);
+// }
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [todos, setTodos] = useState([]);
+
+	useEffect(() => {
+		axios.get("/todo").then((response) => {
+			setTodos(response.data);
+		});
+	}, []);
+	console.log(todos);
+	return (
+		<div className="App">
+			{todos.map((todo, index) => {
+				return (
+					<div key={index}>
+						<p>{todo.id}</p>
+						<p>{todo.todo}</p>
+						<p>{todo.due_day}</p>
+					</div>
+				);
+			})}
+		</div>
+	);
 }
 
 export default App;
+
+// function App() {
+// 	const [todos, setTodos] = useState([]);
+
+// 	useEffect(() => {
+// 		setTodos(["feed boo"]);
+// 	}, []);
+
+// 	return (
+// 		<div className="App">
+// 			<p>{todos}</p>
+// 		</div>
+// 	);
+// }
