@@ -36,7 +36,7 @@ function App() {
 					<div className="backGround" key={index}>
 						<p>{todo.id}</p>
 						<p>{todo.todo}</p>
-						<p>{todo.due_day}</p>
+						<p className="dueday">{todo.due_day}</p>
 					</div>
 				);
 			})}
