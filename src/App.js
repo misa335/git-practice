@@ -33,7 +33,7 @@ function App() {
 		<div className="App">
 			{todos.map((todo, index) => {
 				return (
-					<div key={index}>
+					<div className="backGround" key={index}>
 						<p>{todo.id}</p>
 						<p>{todo.todo}</p>
 						<p>{todo.due_day}</p>
